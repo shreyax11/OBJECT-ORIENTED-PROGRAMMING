@@ -3,69 +3,94 @@
 //and member functions are 
 //getdata(),showdata(),volume(),compare()
 
+// implementation of a class Box having 3 private member variables
+// length l, breadth b, height h
+// member functions: getdata(), showdata(), volume()
+// friend function: compare()
+
 #include <iostream>
+#include <cstdlib>
 using namespace std;
-class Box {
+
+class Box
+{
     int l, b, h;
-public:
-    void getData() {
-        cout << "Enter l b h: ";
-        cin >> l >> b >> h;
-    }
-    void showData() {
-        cout << "l = " << l << " b = " << b << " h = " << h << endl;
-    }
-    int volume() {
+
+    int volume()
+    {
         return l * b * h;
     }
-    void compare(Box other) {
-        if (volume() > other.volume())
-            cout << "Box 1 has greater volume\n";
-        else if (volume() < other.volume())
-            cout << "Box 2 has greater volume\n";
-        else
-            cout << "Both boxes have equal volume\n";
+
+public:
+
+    void getdata()
+    {
+        cout << "\nEnter l, b, h respectively: ";
+        cin >> l >> b >> h;
     }
+
+    void showdata()
+    {
+        cout << "l = " << l << endl;
+        cout << "b = " << b << endl;
+        cout << "h = " << h << endl;
+        cout << "Volume = " << volume() << endl;
+    }
+
+    friend void compare(Box, Box);
 };
-int main() {
-    Box b1, b2;
-    int choice;
-    do {
-        cout << "\n--- MENU ---\n";
-        cout << "1. Get data of Box 1\n";
-        cout << "2. Get data of Box 2\n";
-        cout << "3. Show data of both boxes\n";
-        cout << "4. Show volume of both boxes\n";
-        cout << "5. Compare volumes\n";
-        cout << "6. Exit\n";
-        cout << "Enter choice: ";
-        cin >> choice;
-        switch (choice) {
-        case 1:
-            b1.getData();
-            break;
-        case 2:
-            b2.getData();
-            break;
-        case 3:
-            cout << "Box 1: ";
-            b1.showData();
-            cout << "Box 2: ";
-            b2.showData();
-            break;
-        case 4:
-            cout << "Volume of Box 1 = " << b1.volume() << endl;
-            cout << "Volume of Box 2 = " << b2.volume() << endl;
-            break;
-        case 5:
-            b1.compare(b2);
-            break;
-        case 6:
-            cout << "Exit\n";
-            break;
-        default:
-            cout << "Invalid choice\n";
-        }
-    } while (choice != 6);
-    return 0;
+
+void compare(Box b1, Box b2)
+{
+    if (b1.volume() > b2.volume())
+        cout << "Box 1 has greater volume (Volume = " << b1.volume() << ")" << endl;
+    else if (b2.volume() > b1.volume())
+        cout << "Box 2 has greater volume (Volume = " << b2.volume() << ")" << endl;
+    else
+        cout << "Both boxes have the same volume" << endl;
 }
+
+int main()
+{
+    Box b1, b2;
+    int ch;
+
+    do
+    {
+        cout << "\n----- BOX MENU -----\n";
+        cout << "1. Enter details\n";
+        cout << "2. Show data\n";
+        cout << "3. Compare volume\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> ch;
+
+        switch (ch)
+        {
+        case 1:
+            cout << "Enter details of Box 1:";
+            b1.getdata();
+            cout << "Enter details of Box 2:";
+            b2.getdata();
+            break;
+
+        case 2:
+            cout << "\nBOX 1:\n";
+            b1.showdata();
+            cout << "\nBOX 2:\n";
+            b2.showdata();
+            break;
+
+        case 3:
+            compare(b1, b2);
+            break;
+
+        case 4:
+            exit(0);
+
+        default:
+            cout << "Invalid choice!";
+        }
+    } while (1);
+}
+
