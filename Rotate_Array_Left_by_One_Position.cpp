@@ -1,5 +1,3 @@
-//Rotate Array Left by One Position
-
 #include <iostream>
 using namespace std;
 
