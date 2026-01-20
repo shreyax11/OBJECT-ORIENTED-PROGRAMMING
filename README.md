@@ -26,6 +26,3 @@ It is created for learning, practice, and academic purposes.
 ## Language Used
 - C++ (Standard C++)
 
-## Purpose
-This repository is maintained to strengthen OOP concepts in C++
-and for academic and practical understanding.
