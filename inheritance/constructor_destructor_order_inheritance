@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+/*
+     A
+     |
+     B      C
+      \    /
+        D   
+
+*/
+
+class A
+{
+public:
+    A()
+    {
+        cout<<"Constructor of class A"<<endl;
+    }
+
+    ~A()
+    {
+        cout<<"Destructor of class A"<<endl;
+    }
+};
+
+class B : public A
+{
+public:
+    B()
+    {
+        cout<<"Constructor of class B"<<endl;
+    }
+
+    ~B()
+    {
+        cout<<"Destructor of class B"<<endl;
+    }
+};
+
+class C
+{
+public:
+    C()
+    {
+        cout<<"Constructor of class C"<<endl;
+    }
+
+    ~C()
+    {
+        cout<<"Destructor of class C"<<endl;
+    }
+};
+
+class D : public B, public C
+{
+public:
+    D()
+    {
+        cout<<"Constructor of class D"<<endl;
+    }
+
+    ~D()
+    {
+        cout<<"Destructor of class D"<<endl;
+    }
+};
+
+int main()
+{
+    D obj;
+    return 0;
+}
